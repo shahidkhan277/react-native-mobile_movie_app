@@ -5,8 +5,7 @@ import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 
 import { fetchMovies } from "@/services/api";
-// import { updateSearchCount } from "@/services/appwrite";
-// import useFetch from "@/services/usefetch";
+import { updateSearchCount } from "@/services/appwrite";
 
 import MovieDisplayCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
@@ -35,7 +34,7 @@ const Search = () => {
 
         // Call updateSearchCount only if there are results
         if (movies?.length! > 0 && movies?.[0]) {
-          await loadMovies();
+          await updateSearchCount(searchQuery, movies[0]);
         }
       } else {
         reset();
